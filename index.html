@@ -50,10 +50,6 @@
       cursor: pointer;
     }
 
-    /* =========================
-       APP
-    ========================= */
-
     .app {
       min-height: 100vh;
       display: flex;
@@ -62,7 +58,7 @@
 
     /* =========================
        HEADER
-    ========================= */
+    ========================== */
 
     header {
       width: 100%;
@@ -134,7 +130,7 @@
 
     /* =========================
        MAIN
-    ========================= */
+    ========================== */
 
     main {
       flex: 1;
@@ -203,7 +199,7 @@
 
     /* =========================
        MENU
-    ========================= */
+    ========================== */
 
     .menu-title {
       text-align: center;
@@ -219,6 +215,25 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
+    }
+
+    .menu-group {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .info-menu-group {
+      margin-top: 38px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    .service-menu {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .info-menu {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .menu-card {
@@ -264,7 +279,7 @@
 
     /* =========================
        CONTENT SCREEN
-    ========================= */
+    ========================== */
 
     .content-screen {
       display: none;
@@ -283,6 +298,7 @@
         opacity: 0;
         transform: translateY(8px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -318,7 +334,7 @@
 
     /* =========================
        SERVICE CARDS
-    ========================= */
+    ========================== */
 
     .service-grid {
       display: grid;
@@ -359,7 +375,7 @@
 
     /* =========================
        PRICE
-    ========================= */
+    ========================== */
 
     .price-tabs {
       display: flex;
@@ -444,7 +460,7 @@
 
     /* =========================
        PORTFOLIO
-    ========================= */
+    ========================== */
 
     .portfolio-filter {
       display: flex;
@@ -510,7 +526,7 @@
 
     /* =========================
        ABOUT
-    ========================= */
+    ========================== */
 
     .about-box {
       max-width: 760px;
@@ -551,7 +567,7 @@
 
     /* =========================
        CTA
-    ========================= */
+    ========================== */
 
     .cta {
       margin-top: 35px;
@@ -591,7 +607,7 @@
 
     /* =========================
        WHATSAPP
-    ========================= */
+    ========================== */
 
     .whatsapp {
       position: fixed;
@@ -618,7 +634,7 @@
 
     /* =========================
        FOOTER
-    ========================= */
+    ========================== */
 
     footer {
       text-align: center;
@@ -629,7 +645,7 @@
 
     /* =========================
        MOBILE
-    ========================= */
+    ========================== */
 
     @media (max-width: 700px) {
 
@@ -677,6 +693,16 @@
         gap: 10px;
       }
 
+      .service-menu,
+      .info-menu {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .info-menu-group {
+        margin-top: 32px;
+        padding-top: 25px;
+      }
+
       .menu-card {
         min-height: 120px;
         padding: 18px;
@@ -719,6 +745,7 @@
     }
 
     @media (min-width: 701px) and (max-width: 900px) {
+
       .service-grid,
       .price-grid,
       .portfolio-grid {
@@ -740,12 +767,15 @@
     <div class="header-inner">
 
       <a href="#" class="brand" onclick="showHome(); return false;">
+
+        <!-- LOGO TETAP PUNYA LU -->
         <img src="LOGO ALPRO 2.png" class="brand-logo" alt="Aliflam Project">
 
         <div class="brand-text">
           <div class="brand-name">ALIFLAM PROJECT</div>
           <div class="brand-tagline">DESAIN - WEB - DIGITAL</div>
         </div>
+
       </a>
 
       <button class="home-button" id="homeButton" onclick="showHome()">
@@ -787,53 +817,136 @@
       </div>
 
 
-      <div class="menu-title">
-        Mau cari apa?
+      <!-- =========================
+           LAYANAN UTAMA
+      ========================== -->
+
+      <div class="menu-group">
+
+        <div class="menu-title">
+          Apa yang sedang dibutuhkan?
+        </div>
+
+        <div class="menu-grid service-menu">
+
+          <button class="menu-card" onclick="showPage('desain')">
+
+            <div class="menu-icon">
+              🎨
+            </div>
+
+            <h3>
+              DESAIN
+            </h3>
+
+            <p>
+              Banner, brosur, poster, logo & kebutuhan desain lainnya.
+            </p>
+
+          </button>
+
+
+          <button class="menu-card" onclick="showPage('web')">
+
+            <div class="menu-icon">
+              🌐
+            </div>
+
+            <h3>
+              WEB
+            </h3>
+
+            <p>
+              Website undangan, profil usaha & website custom.
+            </p>
+
+          </button>
+
+
+          <button class="menu-card" onclick="showPage('digital')">
+
+            <div class="menu-icon">
+              ⚡
+            </div>
+
+            <h3>
+              DIGITAL
+            </h3>
+
+            <p>
+              Menu digital, kartu nama, brosur QR & solusi digital.
+            </p>
+
+          </button>
+
+        </div>
+
       </div>
 
 
-      <div class="menu-grid">
+      <!-- =========================
+           INFORMASI LAINNYA
+      ========================== -->
 
-        <button class="menu-card" onclick="showPage('desain')">
-          <div class="menu-icon">🎨</div>
-          <h3>DESAIN</h3>
-          <p>Banner, brosur, poster, logo & kebutuhan desain lainnya.</p>
-        </button>
+      <div class="menu-group info-menu-group">
 
+        <div class="menu-title">
+          Cek informasi lainnya
+        </div>
 
-        <button class="menu-card" onclick="showPage('web')">
-          <div class="menu-icon">🌐</div>
-          <h3>WEB</h3>
-          <p>Website undangan, profil usaha & website custom.</p>
-        </button>
+        <div class="menu-grid info-menu">
 
+          <button class="menu-card" onclick="showPage('harga')">
 
-        <button class="menu-card" onclick="showPage('digital')">
-          <div class="menu-icon">⚡</div>
-          <h3>DIGITAL</h3>
-          <p>Menu digital, kartu nama, brosur QR & solusi digital.</p>
-        </button>
+            <div class="menu-icon">
+              💰
+            </div>
 
+            <h3>
+              HARGA
+            </h3>
 
-        <button class="menu-card" onclick="showPage('portfolio')">
-          <div class="menu-icon">📁</div>
-          <h3>PORTFOLIO</h3>
-          <p>Lihat contoh project yang pernah dibuat.</p>
-        </button>
+            <p>
+              Lihat pilihan layanan dan kisaran harga.
+            </p>
 
-
-        <button class="menu-card" onclick="showPage('harga')">
-          <div class="menu-icon">💰</div>
-          <h3>HARGA</h3>
-          <p>Lihat pilihan layanan dan kisaran harga.</p>
-        </button>
+          </button>
 
 
-        <button class="menu-card" onclick="showPage('tentang')">
-          <div class="menu-icon">ℹ️</div>
-          <h3>TENTANG</h3>
-          <p>Kenalan dengan Aliflam Project.</p>
-        </button>
+          <button class="menu-card" onclick="showPage('portfolio')">
+
+            <div class="menu-icon">
+              📁
+            </div>
+
+            <h3>
+              PORTFOLIO
+            </h3>
+
+            <p>
+              Lihat contoh project yang pernah dibuat.
+            </p>
+
+          </button>
+
+
+          <button class="menu-card" onclick="showPage('tentang')">
+
+            <div class="menu-icon">
+              ℹ️
+            </div>
+
+            <h3>
+              TENTANG
+            </h3>
+
+            <p>
+              Kenalan dengan Aliflam Project.
+            </p>
+
+          </button>
+
+        </div>
 
       </div>
 
@@ -852,7 +965,9 @@
           ← Kembali
         </button>
 
-        <h2>Jasa Desain</h2>
+        <h2>
+          Jasa Desain
+        </h2>
 
         <p>
           Kebutuhan desain untuk bisnis, promosi, branding maupun kebutuhan personal.
@@ -866,51 +981,79 @@
         <div class="service-card">
           <div class="icon">🖼️</div>
           <h3>Banner & Spanduk</h3>
-          <p>Desain banner, spanduk, neon box, promosi toko dan kebutuhan cetak.</p>
+          <p>
+            Desain banner, spanduk, neon box, promosi toko dan kebutuhan cetak.
+          </p>
         </div>
+
 
         <div class="service-card">
           <div class="icon">📄</div>
           <h3>Brosur & Poster</h3>
-          <p>Desain promosi yang rapi, informatif dan mudah dipahami.</p>
+          <p>
+            Desain promosi yang rapi, informatif dan mudah dipahami.
+          </p>
         </div>
+
 
         <div class="service-card">
           <div class="icon">🍽️</div>
           <h3>Menu</h3>
-          <p>Menu restoran, cafe, warung, laundry dan berbagai usaha.</p>
+          <p>
+            Menu restoran, cafe, warung, laundry dan berbagai usaha.
+          </p>
         </div>
+
 
         <div class="service-card">
           <div class="icon">📱</div>
           <h3>Social Media</h3>
-          <p>Konten visual untuk Instagram, Facebook, WhatsApp dan marketplace.</p>
+          <p>
+            Konten visual untuk Instagram, Facebook, WhatsApp dan marketplace.
+          </p>
         </div>
+
 
         <div class="service-card">
           <div class="icon">✦</div>
           <h3>Logo & Branding</h3>
-          <p>Logo dan identitas visual agar bisnis terlihat lebih profesional.</p>
+          <p>
+            Logo dan identitas visual agar bisnis terlihat lebih profesional.
+          </p>
         </div>
+
 
         <div class="service-card">
           <div class="icon">✨</div>
           <h3>Custom Design</h3>
-          <p>Punya kebutuhan desain lain? Bisa dibicarakan sesuai kebutuhan.</p>
+          <p>
+            Punya kebutuhan desain lain? Bisa dibicarakan sesuai kebutuhan.
+          </p>
         </div>
 
       </div>
 
 
       <div class="cta">
+
         <div>
-          <h3>Butuh desain?</h3>
-          <p>Kirim kebutuhan lu, kita bahas dulu.</p>
+          <h3>
+            Butuh desain?
+          </h3>
+
+          <p>
+            Kirim kebutuhan lu, kita bahas dulu.
+          </p>
         </div>
 
-        <a class="cta-button" href="https://wa.me/6281617905237" target="_blank">
+        <a
+          class="cta-button"
+          href="https://wa.me/6281617905237"
+          target="_blank"
+        >
           Chat WhatsApp
         </a>
+
       </div>
 
     </section>
@@ -928,7 +1071,9 @@
           ← Kembali
         </button>
 
-        <h2>Website</h2>
+        <h2>
+          Website
+        </h2>
 
         <p>
           Website sederhana, profesional dan disesuaikan dengan kebutuhan.
@@ -940,41 +1085,95 @@
       <div class="service-grid">
 
         <div class="service-card">
-          <div class="icon">💍</div>
-          <h3>Web Undangan Pernikahan</h3>
-          <p>Undangan digital yang bisa dibagikan melalui WhatsApp dan media sosial.</p>
+
+          <div class="icon">
+            💍
+          </div>
+
+          <h3>
+            Web Undangan Pernikahan
+          </h3>
+
+          <p>
+            Undangan digital yang bisa dibagikan melalui WhatsApp dan media sosial.
+          </p>
+
         </div>
 
-        <div class="service-card">
-          <div class="icon">🎉</div>
-          <h3>Web Undangan Khitanan</h3>
-          <p>Website undangan acara dengan informasi lengkap dan tampilan menarik.</p>
-        </div>
 
         <div class="service-card">
-          <div class="icon">🏪</div>
-          <h3>Web Profil Usaha</h3>
-          <p>Website untuk memperkenalkan bisnis, produk, layanan dan kontak usaha.</p>
+
+          <div class="icon">
+            🎉
+          </div>
+
+          <h3>
+            Web Undangan Khitanan
+          </h3>
+
+          <p>
+            Website undangan acara dengan informasi lengkap dan tampilan menarik.
+          </p>
+
         </div>
 
+
         <div class="service-card">
-          <div class="icon">⚙️</div>
-          <h3>Web Custom</h3>
-          <p>Website sesuai kebutuhan khusus bisnis atau sistem tertentu.</p>
+
+          <div class="icon">
+            🏪
+          </div>
+
+          <h3>
+            Web Profil Usaha
+          </h3>
+
+          <p>
+            Website untuk memperkenalkan bisnis, produk, layanan dan kontak usaha.
+          </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+          <div class="icon">
+            ⚙️
+          </div>
+
+          <h3>
+            Web Custom
+          </h3>
+
+          <p>
+            Website sesuai kebutuhan khusus bisnis atau sistem tertentu.
+          </p>
+
         </div>
 
       </div>
 
 
       <div class="cta">
+
         <div>
-          <h3>Punya ide website?</h3>
-          <p>Ceritakan kebutuhan lu terlebih dahulu.</p>
+          <h3>
+            Punya ide website?
+          </h3>
+
+          <p>
+            Ceritakan kebutuhan lu terlebih dahulu.
+          </p>
         </div>
 
-        <a class="cta-button" href="https://wa.me/6281617905237" target="_blank">
+        <a
+          class="cta-button"
+          href="https://wa.me/6281617905237"
+          target="_blank"
+        >
           Tanya Sekarang
         </a>
+
       </div>
 
     </section>
@@ -992,7 +1191,9 @@
           ← Kembali
         </button>
 
-        <h2>Digital</h2>
+        <h2>
+          Digital
+        </h2>
 
         <p>
           Produk dan solusi digital untuk membantu bisnis tampil lebih praktis.
@@ -1004,53 +1205,129 @@
       <div class="service-grid">
 
         <div class="service-card">
-          <div class="icon">📲</div>
-          <h3>Menu Digital</h3>
-          <p>Customer scan QR lalu langsung melihat menu dari HP.</p>
+
+          <div class="icon">
+            📲
+          </div>
+
+          <h3>
+            Menu Digital
+          </h3>
+
+          <p>
+            Customer scan QR lalu langsung melihat menu dari HP.
+          </p>
+
         </div>
 
-        <div class="service-card">
-          <div class="icon">👤</div>
-          <h3>Kartu Nama Digital</h3>
-          <p>Satu link atau QR untuk menyimpan dan membagikan informasi kontak.</p>
-        </div>
 
         <div class="service-card">
-          <div class="icon">📢</div>
-          <h3>Brosur Digital</h3>
-          <p>Brosur digital yang bisa dibuka melalui link atau QR Code.</p>
+
+          <div class="icon">
+            👤
+          </div>
+
+          <h3>
+            Kartu Nama Digital
+          </h3>
+
+          <p>
+            Satu link atau QR untuk menyimpan dan membagikan informasi kontak.
+          </p>
+
         </div>
 
-        <div class="service-card">
-          <div class="icon">💵</div>
-          <h3>Aplikasi Keuangan</h3>
-          <p>Pencatatan pemasukan, pengeluaran dan monitoring keuangan usaha.</p>
-        </div>
 
         <div class="service-card">
-          <div class="icon">📦</div>
-          <h3>Aplikasi Stok</h3>
-          <p>Membantu mencatat dan memantau stok barang usaha.</p>
+
+          <div class="icon">
+            📢
+          </div>
+
+          <h3>
+            Brosur Digital
+          </h3>
+
+          <p>
+            Brosur digital yang bisa dibuka melalui link atau QR Code.
+          </p>
+
         </div>
 
+
         <div class="service-card">
-          <div class="icon">⚡</div>
-          <h3>Aplikasi Custom</h3>
-          <p>Sistem digital sederhana yang dibuat sesuai kebutuhan usaha.</p>
+
+          <div class="icon">
+            💵
+          </div>
+
+          <h3>
+            Aplikasi Keuangan
+          </h3>
+
+          <p>
+            Pencatatan pemasukan, pengeluaran dan monitoring keuangan usaha.
+          </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+          <div class="icon">
+            📦
+          </div>
+
+          <h3>
+            Aplikasi Stok
+          </h3>
+
+          <p>
+            Membantu mencatat dan memantau stok barang usaha.
+          </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+          <div class="icon">
+            ⚡
+          </div>
+
+          <h3>
+            Aplikasi Custom
+          </h3>
+
+          <p>
+            Sistem digital sederhana yang dibuat sesuai kebutuhan usaha.
+          </p>
+
         </div>
 
       </div>
 
 
       <div class="cta">
+
         <div>
-          <h3>Punya kebutuhan digital?</h3>
-          <p>Jelaskan sistem atau ide yang lu butuhkan.</p>
+          <h3>
+            Punya kebutuhan digital?
+          </h3>
+
+          <p>
+            Jelaskan sistem atau ide yang lu butuhkan.
+          </p>
         </div>
 
-        <a class="cta-button" href="https://wa.me/6281617905237" target="_blank">
+        <a
+          class="cta-button"
+          href="https://wa.me/6281617905237"
+          target="_blank"
+        >
           Chat WhatsApp
         </a>
+
       </div>
 
     </section>
@@ -1068,7 +1345,9 @@
           ← Kembali
         </button>
 
-        <h2>Portfolio</h2>
+        <h2>
+          Portfolio
+        </h2>
 
         <p>
           Beberapa contoh project dan hasil pekerjaan.
@@ -1079,19 +1358,28 @@
 
       <div class="portfolio-filter">
 
-        <button class="active" onclick="filterPortfolio('all', this)">
+        <button
+          class="active"
+          onclick="filterPortfolio('all', this)"
+        >
           Semua
         </button>
 
-        <button onclick="filterPortfolio('desain', this)">
+        <button
+          onclick="filterPortfolio('desain', this)"
+        >
           Desain
         </button>
 
-        <button onclick="filterPortfolio('web', this)">
+        <button
+          onclick="filterPortfolio('web', this)"
+        >
           Web
         </button>
 
-        <button onclick="filterPortfolio('digital', this)">
+        <button
+          onclick="filterPortfolio('digital', this)"
+        >
           Digital
         </button>
 
@@ -1100,75 +1388,147 @@
 
       <div class="portfolio-grid">
 
-        <div class="portfolio-item" data-category="desain">
+        <div
+          class="portfolio-item"
+          data-category="desain"
+        >
+
           <div class="portfolio-placeholder">
             CONTOH DESAIN
           </div>
 
           <div class="portfolio-info">
-            <h3>Banner / Spanduk</h3>
-            <p>Desain promosi bisnis</p>
+
+            <h3>
+              Banner / Spanduk
+            </h3>
+
+            <p>
+              Desain promosi bisnis
+            </p>
+
           </div>
+
         </div>
 
 
-        <div class="portfolio-item" data-category="desain">
+        <div
+          class="portfolio-item"
+          data-category="desain"
+        >
+
           <div class="portfolio-placeholder">
             CONTOH DESAIN
           </div>
 
           <div class="portfolio-info">
-            <h3>Poster Promosi</h3>
-            <p>Desain promosi produk</p>
+
+            <h3>
+              Poster Promosi
+            </h3>
+
+            <p>
+              Desain promosi produk
+            </p>
+
           </div>
+
         </div>
 
 
-        <div class="portfolio-item" data-category="web">
+        <div
+          class="portfolio-item"
+          data-category="web"
+        >
+
           <div class="portfolio-placeholder">
             CONTOH WEBSITE
           </div>
 
           <div class="portfolio-info">
-            <h3>Web Undangan</h3>
-            <p>Website undangan digital</p>
+
+            <h3>
+              Web Undangan
+            </h3>
+
+            <p>
+              Website undangan digital
+            </p>
+
           </div>
+
         </div>
 
 
-        <div class="portfolio-item" data-category="web">
+        <div
+          class="portfolio-item"
+          data-category="web"
+        >
+
           <div class="portfolio-placeholder">
             CONTOH WEBSITE
           </div>
 
           <div class="portfolio-info">
-            <h3>Web Profil Usaha</h3>
-            <p>Website bisnis</p>
+
+            <h3>
+              Web Profil Usaha
+            </h3>
+
+            <p>
+              Website bisnis
+            </p>
+
           </div>
+
         </div>
 
 
-        <div class="portfolio-item" data-category="digital">
+        <div
+          class="portfolio-item"
+          data-category="digital"
+        >
+
           <div class="portfolio-placeholder">
             CONTOH DIGITAL
           </div>
 
           <div class="portfolio-info">
-            <h3>Menu Digital</h3>
-            <p>QR Menu untuk usaha</p>
+
+            <h3>
+              Menu Digital
+            </h3>
+
+            <p>
+              QR Menu untuk usaha
+            </p>
+
           </div>
+
         </div>
 
 
-        <div class="portfolio-item" data-category="digital">
+        <div
+          class="portfolio-item"
+          data-category="digital"
+        >
+
           <div class="portfolio-placeholder">
             CONTOH DIGITAL
           </div>
 
           <div class="portfolio-info">
-            <h3>Kartu Nama Digital</h3>
-            <p>Profil digital berbasis QR</p>
+
+            <h3>
+              Kartu Nama Digital
+            </h3>
+
+            <p>
+              Profil digital berbasis QR
+            </p>
+
           </div>
+
         </div>
 
       </div>
@@ -1188,7 +1548,9 @@
           ← Kembali
         </button>
 
-        <h2>Harga</h2>
+        <h2>
+          Harga
+        </h2>
 
         <p>
           Pilih kategori untuk melihat contoh paket harga.
@@ -1199,15 +1561,24 @@
 
       <div class="price-tabs">
 
-        <button class="price-tab active" onclick="showPrice('priceDesain', this)">
+        <button
+          class="price-tab active"
+          onclick="showPrice('priceDesain', this)"
+        >
           DESAIN
         </button>
 
-        <button class="price-tab" onclick="showPrice('priceWeb', this)">
+        <button
+          class="price-tab"
+          onclick="showPrice('priceWeb', this)"
+        >
           WEB
         </button>
 
-        <button class="price-tab" onclick="showPrice('priceDigital', this)">
+        <button
+          class="price-tab"
+          onclick="showPrice('priceDigital', this)"
+        >
           DIGITAL
         </button>
 
@@ -1216,46 +1587,103 @@
 
       <!-- DESAIN -->
 
-      <div class="price-panel active" id="priceDesain">
+      <div
+        class="price-panel active"
+        id="priceDesain"
+      >
 
         <div class="price-grid">
 
           <div class="price-card">
-            <h3>Desain Sederhana</h3>
-            <div class="starting">Mulai dari</div>
-            <div class="nominal">Rp25K</div>
+
+            <h3>
+              Desain Sederhana
+            </h3>
+
+            <div class="starting">
+              Mulai dari
+            </div>
+
+            <div class="nominal">
+              Rp25K
+            </div>
 
             <ul>
-              <li>1 desain</li>
-              <li>File JPG / PNG</li>
-              <li>Revisi</li>
+              <li>
+                1 desain
+              </li>
+
+              <li>
+                File JPG / PNG
+              </li>
+
+              <li>
+                Revisi
+              </li>
             </ul>
+
           </div>
 
 
           <div class="price-card">
-            <h3>Desain Promosi</h3>
-            <div class="starting">Mulai dari</div>
-            <div class="nominal">Rp50K</div>
+
+            <h3>
+              Desain Promosi
+            </h3>
+
+            <div class="starting">
+              Mulai dari
+            </div>
+
+            <div class="nominal">
+              Rp50K
+            </div>
 
             <ul>
-              <li>Desain lebih kompleks</li>
-              <li>File siap pakai</li>
-              <li>Revisi</li>
+              <li>
+                Desain lebih kompleks
+              </li>
+
+              <li>
+                File siap pakai
+              </li>
+
+              <li>
+                Revisi
+              </li>
             </ul>
+
           </div>
 
 
           <div class="price-card">
-            <h3>Custom</h3>
-            <div class="starting">Harga</div>
-            <div class="nominal">Tanya</div>
+
+            <h3>
+              Custom
+            </h3>
+
+            <div class="starting">
+              Harga
+            </div>
+
+            <div class="nominal">
+              Tanya
+            </div>
 
             <ul>
-              <li>Sesuai kebutuhan</li>
-              <li>Konsep custom</li>
-              <li>Konsultasi</li>
+              <li>
+                Sesuai kebutuhan
+              </li>
+
+              <li>
+                Konsep custom
+              </li>
+
+              <li>
+                Konsultasi
+              </li>
             </ul>
+
           </div>
 
         </div>
@@ -1265,46 +1693,103 @@
 
       <!-- WEB -->
 
-      <div class="price-panel" id="priceWeb">
+      <div
+        class="price-panel"
+        id="priceWeb"
+      >
 
         <div class="price-grid">
 
           <div class="price-card">
-            <h3>Web Undangan</h3>
-            <div class="starting">Mulai dari</div>
-            <div class="nominal">Rp150K</div>
+
+            <h3>
+              Web Undangan
+            </h3>
+
+            <div class="starting">
+              Mulai dari
+            </div>
+
+            <div class="nominal">
+              Rp150K
+            </div>
 
             <ul>
-              <li>Website undangan</li>
-              <li>Responsive HP</li>
-              <li>Link siap dibagikan</li>
+              <li>
+                Website undangan
+              </li>
+
+              <li>
+                Responsive HP
+              </li>
+
+              <li>
+                Link siap dibagikan
+              </li>
             </ul>
+
           </div>
 
 
           <div class="price-card">
-            <h3>Web Profil Usaha</h3>
-            <div class="starting">Mulai dari</div>
-            <div class="nominal">Rp300K</div>
+
+            <h3>
+              Web Profil Usaha
+            </h3>
+
+            <div class="starting">
+              Mulai dari
+            </div>
+
+            <div class="nominal">
+              Rp300K
+            </div>
 
             <ul>
-              <li>Profil bisnis</li>
-              <li>Responsive</li>
-              <li>Kontak WhatsApp</li>
+              <li>
+                Profil bisnis
+              </li>
+
+              <li>
+                Responsive
+              </li>
+
+              <li>
+                Kontak WhatsApp
+              </li>
             </ul>
+
           </div>
 
 
           <div class="price-card">
-            <h3>Web Custom</h3>
-            <div class="starting">Harga</div>
-            <div class="nominal">Tanya</div>
+
+            <h3>
+              Web Custom
+            </h3>
+
+            <div class="starting">
+              Harga
+            </div>
+
+            <div class="nominal">
+              Tanya
+            </div>
 
             <ul>
-              <li>Sesuai kebutuhan</li>
-              <li>Fitur custom</li>
-              <li>Konsultasi</li>
+              <li>
+                Sesuai kebutuhan
+              </li>
+
+              <li>
+                Fitur custom
+              </li>
+
+              <li>
+                Konsultasi
+              </li>
             </ul>
+
           </div>
 
         </div>
@@ -1314,46 +1799,103 @@
 
       <!-- DIGITAL -->
 
-      <div class="price-panel" id="priceDigital">
+      <div
+        class="price-panel"
+        id="priceDigital"
+      >
 
         <div class="price-grid">
 
           <div class="price-card">
-            <h3>Menu Digital</h3>
-            <div class="starting">Mulai dari</div>
-            <div class="nominal">Rp100K</div>
+
+            <h3>
+              Menu Digital
+            </h3>
+
+            <div class="starting">
+              Mulai dari
+            </div>
+
+            <div class="nominal">
+              Rp100K
+            </div>
 
             <ul>
-              <li>Menu online</li>
-              <li>QR Code</li>
-              <li>Responsive HP</li>
+              <li>
+                Menu online
+              </li>
+
+              <li>
+                QR Code
+              </li>
+
+              <li>
+                Responsive HP
+              </li>
             </ul>
+
           </div>
 
 
           <div class="price-card">
-            <h3>Kartu Nama Digital</h3>
-            <div class="starting">Mulai dari</div>
-            <div class="nominal">Rp75K</div>
+
+            <h3>
+              Kartu Nama Digital
+            </h3>
+
+            <div class="starting">
+              Mulai dari
+            </div>
+
+            <div class="nominal">
+              Rp75K
+            </div>
 
             <ul>
-              <li>Profil digital</li>
-              <li>Link kontak</li>
-              <li>QR Code</li>
+              <li>
+                Profil digital
+              </li>
+
+              <li>
+                Link kontak
+              </li>
+
+              <li>
+                QR Code
+              </li>
             </ul>
+
           </div>
 
 
           <div class="price-card">
-            <h3>Aplikasi Custom</h3>
-            <div class="starting">Harga</div>
-            <div class="nominal">Tanya</div>
+
+            <h3>
+              Aplikasi Custom
+            </h3>
+
+            <div class="starting">
+              Harga
+            </div>
+
+            <div class="nominal">
+              Tanya
+            </div>
 
             <ul>
-              <li>Sesuai kebutuhan</li>
-              <li>Fitur custom</li>
-              <li>Konsultasi</li>
+              <li>
+                Sesuai kebutuhan
+              </li>
+
+              <li>
+                Fitur custom
+              </li>
+
+              <li>
+                Konsultasi
+              </li>
             </ul>
+
           </div>
 
         </div>
@@ -1364,11 +1906,22 @@
       <div class="cta">
 
         <div>
-          <h3>Belum tahu butuh yang mana?</h3>
-          <p>Chat dulu. Kita bantu arahkan sesuai kebutuhan.</p>
+
+          <h3>
+            Belum tahu butuh yang mana?
+          </h3>
+
+          <p>
+            Chat dulu. Kita bantu arahkan sesuai kebutuhan.
+          </p>
+
         </div>
 
-        <a class="cta-button" href="https://wa.me/6281617905237" target="_blank">
+        <a
+          class="cta-button"
+          href="https://wa.me/6281617905237"
+          target="_blank"
+        >
           Tanya Harga
         </a>
 
@@ -1381,15 +1934,23 @@
          TENTANG
     ========================== -->
 
-    <section class="content-screen" id="tentang">
+    <section
+      class="content-screen"
+      id="tentang"
+    >
 
       <div class="content-head">
 
-        <button class="back-link" onclick="showHome()">
+        <button
+          class="back-link"
+          onclick="showHome()"
+        >
           ← Kembali
         </button>
 
-        <h2>Tentang</h2>
+        <h2>
+          Tentang
+        </h2>
 
         <p>
           Kenalan dengan Aliflam Project.
@@ -1400,10 +1961,13 @@
 
       <div class="about-box">
 
-        <h3>ALIFLAM PROJECT</h3>
+        <h3>
+          ALIFLAM PROJECT
+        </h3>
 
         <p>
-          Aliflam Project adalah layanan <strong>Desain, Web & Digital</strong>
+          Aliflam Project adalah layanan
+          <strong>Desain, Web & Digital</strong>
           yang membantu bisnis maupun kebutuhan personal memiliki tampilan
           dan solusi digital yang lebih praktis dan profesional.
         </p>
@@ -1440,11 +2004,22 @@
       <div class="cta">
 
         <div>
-          <h3>Punya ide atau kebutuhan?</h3>
-          <p>Yuk ngobrol dulu.</p>
+
+          <h3>
+            Punya ide atau kebutuhan?
+          </h3>
+
+          <p>
+            Yuk ngobrol dulu.
+          </p>
+
         </div>
 
-        <a class="cta-button" href="https://wa.me/6281617905237" target="_blank">
+        <a
+          class="cta-button"
+          href="https://wa.me/6281617905237"
+          target="_blank"
+        >
           Hubungi Kami
         </a>
 
@@ -1463,7 +2038,8 @@
     href="https://wa.me/6281617905237"
     target="_blank"
     class="whatsapp"
-    aria-label="Chat WhatsApp">
+    aria-label="Chat WhatsApp"
+  >
     ☎
   </a>
 
@@ -1483,15 +2059,17 @@
 
   /* =========================
      NAVIGATION
-  ========================= */
+  ========================== */
 
   function showPage(pageId) {
 
     document.getElementById("homeScreen").style.display = "none";
 
-    document.querySelectorAll(".content-screen").forEach(function(section) {
-      section.classList.remove("active");
-    });
+    document
+      .querySelectorAll(".content-screen")
+      .forEach(function(section) {
+        section.classList.remove("active");
+      });
 
     const target = document.getElementById(pageId);
 
@@ -1499,7 +2077,9 @@
       target.classList.add("active");
     }
 
-    document.getElementById("homeButton").classList.add("show");
+    document
+      .getElementById("homeButton")
+      .classList.add("show");
 
     window.scrollTo({
       top: 0,
@@ -1510,13 +2090,17 @@
 
   function showHome() {
 
-    document.querySelectorAll(".content-screen").forEach(function(section) {
-      section.classList.remove("active");
-    });
+    document
+      .querySelectorAll(".content-screen")
+      .forEach(function(section) {
+        section.classList.remove("active");
+      });
 
     document.getElementById("homeScreen").style.display = "block";
 
-    document.getElementById("homeButton").classList.remove("show");
+    document
+      .getElementById("homeButton")
+      .classList.remove("show");
 
     window.scrollTo({
       top: 0,
@@ -1527,19 +2111,25 @@
 
   /* =========================
      PRICE TABS
-  ========================= */
+  ========================== */
 
   function showPrice(panelId, button) {
 
-    document.querySelectorAll(".price-panel").forEach(function(panel) {
-      panel.classList.remove("active");
-    });
+    document
+      .querySelectorAll(".price-panel")
+      .forEach(function(panel) {
+        panel.classList.remove("active");
+      });
 
-    document.querySelectorAll(".price-tab").forEach(function(tab) {
-      tab.classList.remove("active");
-    });
+    document
+      .querySelectorAll(".price-tab")
+      .forEach(function(tab) {
+        tab.classList.remove("active");
+      });
 
-    document.getElementById(panelId).classList.add("active");
+    document
+      .getElementById(panelId)
+      .classList.add("active");
 
     button.classList.add("active");
   }
@@ -1547,31 +2137,37 @@
 
   /* =========================
      PORTFOLIO FILTER
-  ========================= */
+  ========================== */
 
   function filterPortfolio(category, button) {
 
-    document.querySelectorAll(".portfolio-filter button").forEach(function(btn) {
-      btn.classList.remove("active");
-    });
+    document
+      .querySelectorAll(".portfolio-filter button")
+      .forEach(function(btn) {
+        btn.classList.remove("active");
+      });
 
     button.classList.add("active");
 
-    document.querySelectorAll(".portfolio-item").forEach(function(item) {
+    document
+      .querySelectorAll(".portfolio-item")
+      .forEach(function(item) {
 
-      if (category === "all") {
-        item.style.display = "block";
-      } else {
+        if (category === "all") {
 
-        if (item.dataset.category === category) {
           item.style.display = "block";
+
         } else {
-          item.style.display = "none";
+
+          if (item.dataset.category === category) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+
         }
 
-      }
-
-    });
+      });
   }
 
 </script>
