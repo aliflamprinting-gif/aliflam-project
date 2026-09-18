@@ -1,1431 +1,1580 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Aliflam Project — Web, Desain & Digital</title>
-    <meta name="description" content="Aliflam Project — Solusi Web, Desain & Digital untuk kebutuhan bisnis dan personal.">
-
-    <style>
-        :root {
-            --blue: #2563eb;
-            --blue-dark: #0f2d72;
-            --blue-light: #eff6ff;
-            --text: #111827;
-            --muted: #64748b;
-            --white: #ffffff;
-            --border: #e5e7eb;
-            --bg: #f8fafc;
-            --radius: 22px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--white);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        button,
-        a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .container {
-            width: min(1120px, calc(100% - 32px));
-            margin: auto;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,.92);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(229,231,235,.8);
-        }
-
-        .nav-inner {
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-mark {
-            width: 40px;
-            height: 40px;
-            border-radius: 13px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 900;
-            font-size: 17px;
-            background: linear-gradient(135deg, #2563eb, #60a5fa);
-            box-shadow: 0 8px 20px rgba(37,99,235,.25);
-        }
-
-        .logo-text {
-            line-height: 1.05;
-        }
-
-        .logo-main {
-            font-weight: 900;
-            font-size: 15px;
-            letter-spacing: .8px;
-        }
-
-        .logo-sub {
-            font-size: 9px;
-            color: var(--blue);
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            margin-top: 4px;
-        }
-
-        .nav-links {
-            display: none;
-        }
-
-        .nav-cta {
-            display: none;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            position: relative;
-            overflow: hidden;
-            padding: 72px 0 70px;
-            background:
-                radial-gradient(circle at 90% 10%, rgba(96,165,250,.22), transparent 32%),
-                radial-gradient(circle at 5% 30%, rgba(37,99,235,.10), transparent 30%),
-                #ffffff;
-        }
-
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: var(--blue-light);
-            color: var(--blue);
-            padding: 8px 13px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .hero-badge span {
-            width: 7px;
-            height: 7px;
-            background: #22c55e;
-            border-radius: 50%;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 13vw, 78px);
-            line-height: .95;
-            letter-spacing: -3px;
-            font-weight: 950;
-            max-width: 850px;
-            margin: auto;
-        }
-
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, #1d4ed8, #60a5fa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero-tagline {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--blue);
-            margin-top: 18px;
-            letter-spacing: .5px;
-        }
-
-        .hero-desc {
-            max-width: 650px;
-            margin: 17px auto 0;
-            color: var(--muted);
-            font-size: 15px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 11px;
-            margin-top: 28px;
-        }
-
-        .btn {
-            min-height: 50px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 14px;
-            padding: 0 22px;
-            font-size: 14px;
-            font-weight: 800;
-            transition: .2s ease;
-        }
-
-        .btn-primary {
-            background: var(--blue);
-            color: white;
-            box-shadow: 0 10px 25px rgba(37,99,235,.25);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            background: #1d4ed8;
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--border);
-            background: white;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--blue);
-            color: var(--blue);
-        }
-
-        .hero-note {
-            margin-top: 18px;
-            font-size: 11px;
-            color: #94a3b8;
-        }
-
-        /* =========================
-           SECTION
-        ========================= */
-
-        section {
-            padding: 72px 0;
-        }
-
-        .section-head {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto 35px;
-        }
-
-        .section-label {
-            display: inline-block;
-            color: var(--blue);
-            font-size: 11px;
-            font-weight: 900;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .section-title {
-            font-size: clamp(28px, 8vw, 44px);
-            line-height: 1.05;
-            letter-spacing: -1.5px;
-            font-weight: 900;
-        }
-
-        .section-desc {
-            color: var(--muted);
-            font-size: 14px;
-            margin-top: 12px;
-        }
-
-        /* =========================
-           SERVICES
-        ========================= */
-
-        .services {
-            background: var(--bg);
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 14px;
-        }
-
-        .service-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 23px;
-            transition: .25s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-4px);
-            border-color: #bfdbfe;
-            box-shadow: 0 18px 40px rgba(15,45,114,.08);
-        }
-
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--blue-light);
-            font-size: 22px;
-            margin-bottom: 17px;
-        }
-
-        .service-card h3 {
-            font-size: 18px;
-            margin-bottom: 7px;
-        }
-
-        .service-card p {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        .service-link {
-            display: inline-flex;
-            margin-top: 17px;
-            color: var(--blue);
-            font-size: 12px;
-            font-weight: 800;
-        }
-
-        /* =========================
-           PORTFOLIO
-        ========================= */
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        .portfolio-card {
-            overflow: hidden;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: white;
-        }
-
-        .portfolio-image {
-            height: 190px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: linear-gradient(135deg, #dbeafe, #eff6ff);
-        }
-
-        .portfolio-mockup {
-            width: 72%;
-            height: 125px;
-            border-radius: 14px;
-            background: white;
-            box-shadow: 0 18px 35px rgba(15,45,114,.14);
-            padding: 15px;
-        }
-
-        .mock-line {
-            height: 7px;
-            border-radius: 99px;
-            background: #dbeafe;
-            margin-bottom: 9px;
-        }
-
-        .mock-line.big {
-            width: 60%;
-            height: 15px;
-            background: #2563eb;
-        }
-
-        .mock-line.short {
-            width: 45%;
-        }
-
-        .mock-boxes {
-            display: flex;
-            gap: 7px;
-            margin-top: 13px;
-        }
-
-        .mock-box {
-            flex: 1;
-            height: 42px;
-            border-radius: 8px;
-            background: #eff6ff;
-        }
-
-        .portfolio-info {
-            padding: 19px;
-        }
-
-        .portfolio-info h3 {
-            font-size: 17px;
-        }
-
-        .portfolio-info p {
-            font-size: 12px;
-            color: var(--muted);
-            margin-top: 4px;
-        }
-
-        .portfolio-tag {
-            display: inline-block;
-            margin-top: 13px;
-            background: var(--blue-light);
-            color: var(--blue);
-            font-size: 10px;
-            font-weight: 800;
-            padding: 6px 9px;
-            border-radius: 999px;
-        }
-
-        /* =========================
-           WHY US
-        ========================= */
-
-        .why {
-            background: #0b1f4d;
-            color: white;
-        }
-
-        .why .section-label {
-            color: #93c5fd;
-        }
-
-        .why .section-desc {
-            color: #bfdbfe;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 13px;
-        }
-
-        .why-card {
-            padding: 20px;
-            border: 1px solid rgba(255,255,255,.10);
-            background: rgba(255,255,255,.05);
-            border-radius: 18px;
-        }
-
-        .why-number {
-            color: #60a5fa;
-            font-size: 12px;
-            font-weight: 900;
-        }
-
-        .why-card h3 {
-            margin-top: 7px;
-            font-size: 16px;
-        }
-
-        .why-card p {
-            margin-top: 5px;
-            color: #bfdbfe;
-            font-size: 12px;
-        }
-
-        /* =========================
-           PROCESS
-        ========================= */
-
-        .process-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
-
-        .process-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 18px;
-            border: 1px solid var(--border);
-            border-radius: 18px;
-        }
-
-        .process-number {
-            min-width: 38px;
-            height: 38px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--blue);
-            color: white;
-            font-size: 13px;
-            font-weight: 900;
-        }
-
-        .process-item h3 {
-            font-size: 15px;
-        }
-
-        .process-item p {
-            color: var(--muted);
-            font-size: 12px;
-            margin-top: 3px;
-        }
-
-        /* =========================
-           PRICING
-        ========================= */
-
-        .pricing {
-            background: var(--bg);
-        }
-
-        .pricing-card {
-            max-width: 500px;
-            margin: auto;
-            background: white;
-            border: 2px solid #bfdbfe;
-            border-radius: 26px;
-            padding: 28px 23px;
-            box-shadow: 0 20px 50px rgba(15,45,114,.08);
-        }
-
-        .pricing-badge {
-            display: inline-block;
-            background: var(--blue);
-            color: white;
-            border-radius: 999px;
-            padding: 6px 10px;
-            font-size: 10px;
-            font-weight: 900;
-        }
-
-        .pricing-card h3 {
-            font-size: 25px;
-            margin-top: 14px;
-        }
-
-        .pricing-card > p {
-            color: var(--muted);
-            font-size: 13px;
-            margin-top: 5px;
-        }
-
-        .price-placeholder {
-            margin: 20px 0;
-            font-size: 30px;
-            font-weight: 900;
-            color: var(--blue);
-        }
-
-        .feature-list {
-            list-style: none;
-            display: grid;
-            gap: 10px;
-        }
-
-        .feature-list li {
-            font-size: 13px;
-            color: #475569;
-        }
-
-        .feature-list li::before {
-            content: "✓";
-            color: #16a34a;
-            font-weight: 900;
-            margin-right: 9px;
-        }
-
-        /* =========================
-           FAQ
-        ========================= */
-
-        .faq-list {
-            display: grid;
-            gap: 10px;
-            max-width: 760px;
-            margin: auto;
-        }
-
-        details {
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 16px 18px;
-            background: white;
-        }
-
-        summary {
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 800;
-        }
-
-        details p {
-            color: var(--muted);
-            font-size: 12px;
-            padding-top: 10px;
-        }
-
-        /* =========================
-           CTA
-        ========================= */
-
-        .cta {
-            padding: 25px 0 75px;
-        }
-
-        .cta-box {
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
-            color: white;
-            border-radius: 28px;
-            padding: 38px 23px;
-            text-align: center;
-        }
-
-        .cta-box::after {
-            content: "";
-            position: absolute;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.08);
-            right: -70px;
-            top: -70px;
-        }
-
-        .cta-box h2 {
-            position: relative;
-            z-index: 2;
-            font-size: clamp(28px, 8vw, 43px);
-            line-height: 1.05;
-        }
-
-        .cta-box p {
-            position: relative;
-            z-index: 2;
-            margin: 12px auto 22px;
-            max-width: 550px;
-            font-size: 13px;
-            color: #dbeafe;
-        }
-
-        .cta-box .btn {
-            position: relative;
-            z-index: 2;
-            background: white;
-            color: var(--blue);
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #071633;
-            color: white;
-            padding: 42px 0 25px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 28px;
-        }
-
-        .footer-brand p {
-            color: #94a3b8;
-            font-size: 12px;
-            max-width: 300px;
-            margin-top: 10px;
-        }
-
-        .footer-title {
-            font-size: 12px;
-            font-weight: 900;
-            margin-bottom: 10px;
-        }
-
-        .footer-links {
-            display: grid;
-            gap: 7px;
-            color: #94a3b8;
-            font-size: 12px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,.08);
-            margin-top: 30px;
-            padding-top: 20px;
-            color: #64748b;
-            font-size: 10px;
-            text-align: center;
-        }
-
-        /* =========================
-           DESKTOP
-        ========================= */
-
-        @media (min-width: 700px) {
-
-            .container {
-                width: min(1120px, calc(100% - 48px));
-            }
-
-            .nav-links {
-                display: flex;
-                align-items: center;
-                gap: 25px;
-                font-size: 12px;
-                font-weight: 700;
-                color: #475569;
-            }
-
-            .nav-links a:hover {
-                color: var(--blue);
-            }
-
-            .nav-cta {
-                display: inline-flex;
-                background: var(--blue);
-                color: white;
-                padding: 10px 16px;
-                border-radius: 11px;
-                font-size: 11px;
-                font-weight: 800;
-            }
-
-            .hero {
-                padding: 105px 0 100px;
-            }
-
-            .hero-buttons {
-                flex-direction: row;
-                justify-content: center;
-            }
-
-            .btn {
-                min-width: 155px;
-            }
-
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .why-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .process-list {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-            }
-        }
-
-        @media (min-width: 1000px) {
-
-            .service-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .process-list {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .process-item {
-                display: block;
-            }
-
-            .process-number {
-                margin-bottom: 14px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aliflam Project — Desain, Web & Digital</title>
+  <meta name="description" content="Aliflam Project — Desain, Web & Digital untuk kebutuhan bisnis dan personal.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blue: #087cf5;
+      --blue-dark: #073b91;
+      --cyan: #11c9f5;
+      --navy: #071b49;
+      --text: #172033;
+      --muted: #6b7280;
+      --light: #f5f8fc;
+      --white: #ffffff;
+      --border: #e7edf5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f7faff;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* =========================
+       APP
+    ========================= */
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      width: 100%;
+      padding: 18px 24px;
+      background: rgba(255,255,255,0.94);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      max-width: 1050px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      line-height: 1.15;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-tagline {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .home-button {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      display: none;
+    }
+
+    .home-button.show {
+      display: block;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      flex: 1;
+      width: 100%;
+    }
+
+    .home-screen {
+      max-width: 1050px;
+      margin: auto;
+      padding: 55px 24px 80px;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 42px;
+    }
+
+    .hero-logo {
+      width: min(500px, 88%);
+      max-height: 155px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #edf6ff;
+      color: var(--blue-dark);
+      border: 1px solid #dcecff;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero-kicker span {
+      width: 7px;
+      height: 7px;
+      background: var(--cyan);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 strong {
+      color: var(--blue);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 570px;
+      margin: auto;
+    }
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu-title {
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .menu-grid {
+      max-width: 760px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .menu-card {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 18px;
+      min-height: 125px;
+      padding: 22px 18px;
+      text-align: left;
+      transition: .2s ease;
+      box-shadow: 0 5px 20px rgba(9, 46, 105, 0.04);
+    }
+
+    .menu-card:hover {
+      transform: translateY(-3px);
+      border-color: #b9d8ff;
+      box-shadow: 0 12px 30px rgba(9, 80, 180, 0.10);
+    }
+
+    .menu-icon {
+      width: 43px;
+      height: 43px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 13px;
+      background: #edf6ff;
+      font-size: 21px;
+      margin-bottom: 15px;
+    }
+
+    .menu-card h3 {
+      font-size: 15px;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .menu-card p {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* =========================
+       CONTENT SCREEN
+    ========================= */
+
+    .content-screen {
+      display: none;
+      max-width: 1050px;
+      margin: auto;
+      padding: 45px 24px 80px;
+    }
+
+    .content-screen.active {
+      display: block;
+      animation: fadeIn .25s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content-head {
+      margin-bottom: 30px;
+    }
+
+    .back-link {
+      border: 0;
+      background: transparent;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 0;
+      margin-bottom: 22px;
+    }
+
+    .content-head h2 {
+      font-size: clamp(27px, 5vw, 40px);
+      color: var(--navy);
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .content-head p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       SERVICE CARDS
+    ========================= */
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 23px;
+    }
+
+    .service-card .icon {
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      font-size: 16px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .service-card .price {
+      margin-top: 18px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       PRICE
+    ========================= */
+
+    .price-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .price-tab {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 10px 17px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .price-tab.active {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    .price-panel {
+      display: none;
+    }
+
+    .price-panel.active {
+      display: block;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .price-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .price-card h3 {
+      color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .price-card .starting {
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 7px;
+    }
+
+    .price-card .nominal {
+      font-size: 25px;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 17px;
+    }
+
+    .price-card ul {
+      list-style: none;
+    }
+
+    .price-card li {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 7px 0;
+      border-bottom: 1px solid #f0f3f7;
+    }
+
+    .price-card li::before {
+      content: "✓";
+      color: var(--blue);
+      font-weight: 800;
+      margin-right: 8px;
+    }
+
+    /* =========================
+       PORTFOLIO
+    ========================= */
+
+    .portfolio-filter {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .portfolio-filter button {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .portfolio-filter button.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: white;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .portfolio-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .portfolio-placeholder {
+      height: 190px;
+      background: linear-gradient(135deg, #edf6ff, #f8fbff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8ba4c7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .portfolio-info {
+      padding: 16px;
+    }
+
+    .portfolio-info h3 {
+      font-size: 14px;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .portfolio-info p {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-box {
+      max-width: 760px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 30px;
+    }
+
+    .about-box h3 {
+      color: var(--navy);
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .about-point {
+      padding: 13px;
+      background: #f7faff;
+      border-radius: 12px;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      margin-top: 35px;
+      background: linear-gradient(135deg, var(--navy), #075fc7);
+      border-radius: 22px;
+      padding: 28px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .cta h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .cta p {
+      font-size: 12px;
+      opacity: .82;
+    }
+
+    .cta-button {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      color: var(--navy);
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 57px;
+      height: 57px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 28px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, .30);
+      z-index: 200;
+      transition: .2s ease;
+    }
+
+    .whatsapp:hover {
+      transform: scale(1.06);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+      padding: 25px 20px 35px;
+      color: #8b96a8;
+      font-size: 11px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      header {
+        padding: 13px 16px;
+      }
+
+      .brand-logo {
+        width: 46px;
+        height: 46px;
+      }
+
+      .brand-name {
+        font-size: 16px;
+      }
+
+      .brand-tagline {
+        font-size: 8px;
+        letter-spacing: 1px;
+      }
+
+      .home-screen {
+        padding: 38px 16px 70px;
+      }
+
+      .hero {
+        margin-bottom: 32px;
+      }
+
+      .hero-logo {
+        width: 88%;
+        max-height: 115px;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero p {
+        font-size: 13px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .menu-card {
+        min-height: 120px;
+        padding: 18px;
+        border-radius: 16px;
+      }
+
+      .menu-card h3 {
+        font-size: 14px;
+      }
+
+      .content-screen {
+        padding: 30px 16px 70px;
+      }
+
+      .service-grid,
+      .price-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cta-button {
+        width: 100%;
+      }
+
+      .about-points {
+        grid-template-columns: 1fr;
+      }
+
+      .whatsapp {
+        width: 53px;
+        height: 53px;
+        right: 17px;
+        bottom: 17px;
+      }
+    }
+
+    @media (min-width: 701px) and (max-width: 900px) {
+      .service-grid,
+      .price-grid,
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="container nav-inner">
+<div class="app">
 
-            <a href="#" class="logo">
-                <div class="logo-mark">AP</div>
+  <!-- =========================
+       HEADER
+  ========================== -->
 
-                <div class="logo-text">
-                    <div class="logo-main">ALIFLAM</div>
-                    <div class="logo-sub">PROJECT</div>
-                </div>
-            </a>
+  <header>
+    <div class="header-inner">
 
-            <nav class="nav-links">
-                <a href="#layanan">Layanan</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#harga">Harga</a>
-                <a href="#faq">FAQ</a>
-            </nav>
+      <a href="#" class="brand" onclick="showHome(); return false;">
+        <img src="LOGO ALPRO.png" class="brand-logo" alt="Aliflam Project">
 
-            <a href="#kontak" class="nav-cta">
-                Hubungi Kami
-            </a>
-
+        <div class="brand-text">
+          <div class="brand-name">ALIFLAM PROJECT</div>
+          <div class="brand-tagline">DESAIN - WEB - DIGITAL</div>
         </div>
-    </header>
+      </a>
 
+      <button class="home-button" id="homeButton" onclick="showHome()">
+        ← Beranda
+      </button>
 
-    <!-- HERO -->
-    <main>
+    </div>
+  </header>
 
-        <section class="hero">
-            <div class="container hero-content">
 
-                <div class="hero-badge">
-                    <span></span>
-                    Solusi Digital untuk Kebutuhan Anda
-                </div>
+  <!-- =========================
+       MAIN
+  ========================== -->
 
-                <h1>
-                    Bikin Ide Jadi
-                    <span class="gradient">Digital.</span>
-                </h1>
+  <main>
 
-                <div class="hero-tagline">
-                    WEB • DESAIN • DIGITAL
-                </div>
+    <!-- =========================
+         HOME
+    ========================== -->
 
-                <p class="hero-desc">
-                    Kami membantu bisnis dan kebutuhan personal melalui
-                    website, desain, produk digital, dan aplikasi yang
-                    dibuat sesuai kebutuhan.
-                </p>
+    <section class="home-screen" id="homeScreen">
 
-                <div class="hero-buttons">
-                    <a href="#layanan" class="btn btn-primary">
-                        Lihat Layanan
-                    </a>
+      <div class="hero">
 
-                    <a href="#portfolio" class="btn btn-secondary">
-                        Lihat Contoh
-                    </a>
-                </div>
+        <div class="hero-kicker">
+          <span></span>
+          ALIFLAM PROJECT
+        </div>
 
-                <div class="hero-note">
-                    Custom sesuai kebutuhan • Responsive • Siap dikembangkan
-                </div>
+        <h1>
+          <strong>Desain.</strong> Web. Digital.
+        </h1>
 
-            </div>
-        </section>
+        <p>
+          Bantu bisnis dan kebutuhan personal tampil lebih profesional
+          lewat desain, website, dan solusi digital.
+        </p>
 
+      </div>
 
-        <!-- LAYANAN -->
-        <section class="services" id="layanan">
 
-            <div class="container">
+      <div class="menu-title">
+        Mau cari apa?
+      </div>
 
-                <div class="section-head">
-                    <div class="section-label">Layanan</div>
 
-                    <h2 class="section-title">
-                        Apa yang bisa kami buat?
-                    </h2>
+      <div class="menu-grid">
 
-                    <p class="section-desc">
-                        Dari kebutuhan sederhana sampai sistem digital
-                        untuk membantu bisnis berkembang.
-                    </p>
-                </div>
+        <button class="menu-card" onclick="showPage('desain')">
+          <div class="menu-icon">🎨</div>
+          <h3>DESAIN</h3>
+          <p>Banner, brosur, poster, logo & kebutuhan desain lainnya.</p>
+        </button>
 
 
-                <div class="service-grid">
+        <button class="menu-card" onclick="showPage('web')">
+          <div class="menu-icon">🌐</div>
+          <h3>WEB</h3>
+          <p>Website undangan, profil usaha & website custom.</p>
+        </button>
 
-                    <article class="service-card">
-                        <div class="service-icon">🌐</div>
 
-                        <h3>Website</h3>
+        <button class="menu-card" onclick="showPage('digital')">
+          <div class="menu-icon">⚡</div>
+          <h3>DIGITAL</h3>
+          <p>Menu digital, kartu nama, brosur QR & solusi digital.</p>
+        </button>
 
-                        <p>
-                            Website undangan, profil usaha,
-                            landing page, dan kebutuhan lainnya.
-                        </p>
 
-                        <a href="#portfolio" class="service-link">
-                            Lihat contoh →
-                        </a>
-                    </article>
+        <button class="menu-card" onclick="showPage('portfolio')">
+          <div class="menu-icon">📁</div>
+          <h3>PORTFOLIO</h3>
+          <p>Lihat contoh project yang pernah dibuat.</p>
+        </button>
 
 
-                    <article class="service-card">
-                        <div class="service-icon">📱</div>
+        <button class="menu-card" onclick="showPage('harga')">
+          <div class="menu-icon">💰</div>
+          <h3>HARGA</h3>
+          <p>Lihat pilihan layanan dan kisaran harga.</p>
+        </button>
 
-                        <h3>Digital Business</h3>
 
-                        <p>
-                            Menu digital, kartu nama digital,
-                            brosur digital, dan produk berbasis QR.
-                        </p>
+        <button class="menu-card" onclick="showPage('tentang')">
+          <div class="menu-icon">ℹ️</div>
+          <h3>TENTANG</h3>
+          <p>Kenalan dengan Aliflam Project.</p>
+        </button>
 
-                        <a href="#portfolio" class="service-link">
-                            Lihat contoh →
-                        </a>
-                    </article>
+      </div>
 
+    </section>
 
-                    <article class="service-card">
-                        <div class="service-icon">⚙️</div>
 
-                        <h3>Aplikasi Usaha</h3>
+    <!-- =========================
+         DESAIN
+    ========================== -->
 
-                        <p>
-                            Sistem keuangan, stok, request order,
-                            dan manajemen data.
-                        </p>
+    <section class="content-screen" id="desain">
 
-                        <a href="#portfolio" class="service-link">
-                            Lihat contoh →
-                        </a>
-                    </article>
+      <div class="content-head">
 
+        <button class="back-link" onclick="showHome()">
+          ← Kembali
+        </button>
 
-                    <article class="service-card">
-                        <div class="service-icon">🎨</div>
+        <h2>Jasa Desain</h2>
 
-                        <h3>Jasa Desain</h3>
+        <p>
+          Kebutuhan desain untuk bisnis, promosi, branding maupun kebutuhan personal.
+        </p>
 
-                        <p>
-                            Banner, brosur, poster, sosial media,
-                            logo, dan desain custom.
-                        </p>
+      </div>
 
-                        <a href="#portfolio" class="service-link">
-                            Lihat contoh →
-                        </a>
-                    </article>
 
-                </div>
+      <div class="service-grid">
 
-            </div>
+        <div class="service-card">
+          <div class="icon">🖼️</div>
+          <h3>Banner & Spanduk</h3>
+          <p>Desain banner, spanduk, neon box, promosi toko dan kebutuhan cetak.</p>
+        </div>
 
-        </section>
+        <div class="service-card">
+          <div class="icon">📄</div>
+          <h3>Brosur & Poster</h3>
+          <p>Desain promosi yang rapi, informatif dan mudah dipahami.</p>
+        </div>
 
+        <div class="service-card">
+          <div class="icon">🍽️</div>
+          <h3>Menu</h3>
+          <p>Menu restoran, cafe, warung, laundry dan berbagai usaha.</p>
+        </div>
 
-        <!-- PORTFOLIO -->
-        <section id="portfolio">
+        <div class="service-card">
+          <div class="icon">📱</div>
+          <h3>Social Media</h3>
+          <p>Konten visual untuk Instagram, Facebook, WhatsApp dan marketplace.</p>
+        </div>
 
-            <div class="container">
+        <div class="service-card">
+          <div class="icon">✦</div>
+          <h3>Logo & Branding</h3>
+          <p>Logo dan identitas visual agar bisnis terlihat lebih profesional.</p>
+        </div>
 
-                <div class="section-head">
-                    <div class="section-label">Portfolio</div>
+        <div class="service-card">
+          <div class="icon">✨</div>
+          <h3>Custom Design</h3>
+          <p>Punya kebutuhan desain lain? Bisa dibicarakan sesuai kebutuhan.</p>
+        </div>
 
-                    <h2 class="section-title">
-                        Contoh yang bisa dibuat
-                    </h2>
+      </div>
 
-                    <p class="section-desc">
-                        Beberapa contoh produk digital yang dapat
-                        disesuaikan dengan kebutuhan Anda.
-                    </p>
-                </div>
 
+      <div class="cta">
+        <div>
+          <h3>Butuh desain?</h3>
+          <p>Kirim kebutuhan lu, kita bahas dulu.</p>
+        </div>
 
-                <div class="portfolio-grid">
+        <a class="cta-button" href="https://wa.me/6281234567890" target="_blank">
+          Chat WhatsApp
+        </a>
+      </div>
 
-                    <article class="portfolio-card">
+    </section>
 
-                        <div class="portfolio-image">
-                            <div class="portfolio-mockup">
-                                <div class="mock-line big"></div>
-                                <div class="mock-line"></div>
-                                <div class="mock-line short"></div>
 
-                                <div class="mock-boxes">
-                                    <div class="mock-box"></div>
-                                    <div class="mock-box"></div>
-                                    <div class="mock-box"></div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- =========================
+         WEB
+    ========================== -->
 
-                        <div class="portfolio-info">
-                            <h3>Website Undangan</h3>
+    <section class="content-screen" id="web">
 
-                            <p>
-                                Undangan digital yang elegan,
-                                responsive, dan mudah dibagikan.
-                            </p>
+      <div class="content-head">
 
-                            <span class="portfolio-tag">
-                                WEBSITE
-                            </span>
-                        </div>
+        <button class="back-link" onclick="showHome()">
+          ← Kembali
+        </button>
 
-                    </article>
+        <h2>Website</h2>
 
+        <p>
+          Website sederhana, profesional dan disesuaikan dengan kebutuhan.
+        </p>
 
-                    <article class="portfolio-card">
+      </div>
 
-                        <div class="portfolio-image">
-                            <div class="portfolio-mockup">
-                                <div class="mock-line big"></div>
-                                <div class="mock-line short"></div>
 
-                                <div class="mock-boxes">
-                                    <div class="mock-box"></div>
-                                    <div class="mock-box"></div>
-                                </div>
-                            </div>
-                        </div>
+      <div class="service-grid">
 
-                        <div class="portfolio-info">
-                            <h3>Menu Digital</h3>
+        <div class="service-card">
+          <div class="icon">💍</div>
+          <h3>Web Undangan Pernikahan</h3>
+          <p>Undangan digital yang bisa dibagikan melalui WhatsApp dan media sosial.</p>
+        </div>
 
-                            <p>
-                                Pelanggan cukup scan QR untuk
-                                melihat menu secara online.
-                            </p>
+        <div class="service-card">
+          <div class="icon">🎉</div>
+          <h3>Web Undangan Khitanan</h3>
+          <p>Website undangan acara dengan informasi lengkap dan tampilan menarik.</p>
+        </div>
 
-                            <span class="portfolio-tag">
-                                DIGITAL BUSINESS
-                            </span>
-                        </div>
+        <div class="service-card">
+          <div class="icon">🏪</div>
+          <h3>Web Profil Usaha</h3>
+          <p>Website untuk memperkenalkan bisnis, produk, layanan dan kontak usaha.</p>
+        </div>
 
-                    </article>
+        <div class="service-card">
+          <div class="icon">⚙️</div>
+          <h3>Web Custom</h3>
+          <p>Website sesuai kebutuhan khusus bisnis atau sistem tertentu.</p>
+        </div>
 
+      </div>
 
-                    <article class="portfolio-card">
 
-                        <div class="portfolio-image">
-                            <div class="portfolio-mockup">
-                                <div class="mock-line big"></div>
-                                <div class="mock-line"></div>
-                                <div class="mock-line"></div>
+      <div class="cta">
+        <div>
+          <h3>Punya ide website?</h3>
+          <p>Ceritakan kebutuhan lu terlebih dahulu.</p>
+        </div>
 
-                                <div class="mock-boxes">
-                                    <div class="mock-box"></div>
-                                    <div class="mock-box"></div>
-                                </div>
-                            </div>
-                        </div>
+        <a class="cta-button" href="https://wa.me/6281234567890" target="_blank">
+          Tanya Sekarang
+        </a>
+      </div>
 
-                        <div class="portfolio-info">
-                            <h3>Aplikasi Usaha</h3>
+    </section>
 
-                            <p>
-                                Sistem digital yang dibuat
-                                mengikuti alur kerja bisnis.
-                            </p>
 
-                            <span class="portfolio-tag">
-                                APPLICATION
-                            </span>
-                        </div>
+    <!-- =========================
+         DIGITAL
+    ========================== -->
 
-                    </article>
+    <section class="content-screen" id="digital">
 
-                </div>
+      <div class="content-head">
 
-            </div>
+        <button class="back-link" onclick="showHome()">
+          ← Kembali
+        </button>
 
-        </section>
+        <h2>Digital</h2>
 
+        <p>
+          Produk dan solusi digital untuk membantu bisnis tampil lebih praktis.
+        </p>
 
-        <!-- WHY -->
-        <section class="why">
+      </div>
 
-            <div class="container">
 
-                <div class="section-head">
-                    <div class="section-label">Kenapa Aliflam?</div>
+      <div class="service-grid">
 
-                    <h2 class="section-title">
-                        Dibuat sesuai kebutuhan.
-                    </h2>
+        <div class="service-card">
+          <div class="icon">📲</div>
+          <h3>Menu Digital</h3>
+          <p>Customer scan QR lalu langsung melihat menu dari HP.</p>
+        </div>
 
-                    <p class="section-desc">
-                        Bukan sekadar template. Setiap project dapat
-                        dikembangkan sesuai kebutuhan Anda.
-                    </p>
-                </div>
+        <div class="service-card">
+          <div class="icon">👤</div>
+          <h3>Kartu Nama Digital</h3>
+          <p>Satu link atau QR untuk menyimpan dan membagikan informasi kontak.</p>
+        </div>
 
+        <div class="service-card">
+          <div class="icon">📢</div>
+          <h3>Brosur Digital</h3>
+          <p>Brosur digital yang bisa dibuka melalui link atau QR Code.</p>
+        </div>
 
-                <div class="why-grid">
+        <div class="service-card">
+          <div class="icon">💵</div>
+          <h3>Aplikasi Keuangan</h3>
+          <p>Pencatatan pemasukan, pengeluaran dan monitoring keuangan usaha.</p>
+        </div>
 
-                    <article class="why-card">
-                        <div class="why-number">01</div>
-                        <h3>Custom</h3>
-                        <p>
-                            Tampilan dan fitur disesuaikan
-                            dengan kebutuhan.
-                        </p>
-                    </article>
+        <div class="service-card">
+          <div class="icon">📦</div>
+          <h3>Aplikasi Stok</h3>
+          <p>Membantu mencatat dan memantau stok barang usaha.</p>
+        </div>
 
-                    <article class="why-card">
-                        <div class="why-number">02</div>
-                        <h3>Responsive</h3>
-                        <p>
-                            Nyaman digunakan dari HP,
-                            tablet, maupun desktop.
-                        </p>
-                    </article>
+        <div class="service-card">
+          <div class="icon">⚡</div>
+          <h3>Aplikasi Custom</h3>
+          <p>Sistem digital sederhana yang dibuat sesuai kebutuhan usaha.</p>
+        </div>
 
-                    <article class="why-card">
-                        <div class="why-number">03</div>
-                        <h3>Praktis</h3>
-                        <p>
-                            Dibuat dengan fokus pada fungsi
-                            dan kemudahan penggunaan.
-                        </p>
-                    </article>
+      </div>
 
-                    <article class="why-card">
-                        <div class="why-number">04</div>
-                        <h3>Bisa Dikembangkan</h3>
-                        <p>
-                            Project dapat dikembangkan
-                            menjadi sistem yang lebih besar.
-                        </p>
-                    </article>
 
-                </div>
+      <div class="cta">
+        <div>
+          <h3>Punya kebutuhan digital?</h3>
+          <p>Jelaskan sistem atau ide yang lu butuhkan.</p>
+        </div>
 
-            </div>
+        <a class="cta-button" href="https://wa.me/6281234567890" target="_blank">
+          Chat WhatsApp
+        </a>
+      </div>
 
-        </section>
+    </section>
 
 
-        <!-- PROCESS -->
-        <section>
+    <!-- =========================
+         PORTFOLIO
+    ========================== -->
 
-            <div class="container">
+    <section class="content-screen" id="portfolio">
 
-                <div class="section-head">
-                    <div class="section-label">Cara Kerja</div>
+      <div class="content-head">
 
-                    <h2 class="section-title">
-                        Simpel dari awal sampai jadi.
-                    </h2>
-                </div>
+        <button class="back-link" onclick="showHome()">
+          ← Kembali
+        </button>
 
+        <h2>Portfolio</h2>
 
-                <div class="process-list">
+        <p>
+          Beberapa contoh project dan hasil pekerjaan.
+        </p>
 
-                    <article class="process-item">
-                        <div class="process-number">01</div>
-                        <div>
-                            <h3>Konsultasi</h3>
-                            <p>
-                                Ceritakan kebutuhan dan ide Anda.
-                            </p>
-                        </div>
-                    </article>
+      </div>
 
 
-                    <article class="process-item">
-                        <div class="process-number">02</div>
-                        <div>
-                            <h3>Konsep</h3>
-                            <p>
-                                Kami susun konsep dan tampilan.
-                            </p>
-                        </div>
-                    </article>
+      <div class="portfolio-filter">
 
+        <button class="active" onclick="filterPortfolio('all', this)">
+          Semua
+        </button>
 
-                    <article class="process-item">
-                        <div class="process-number">03</div>
-                        <div>
-                            <h3>Pengerjaan</h3>
-                            <p>
-                                Project mulai dibuat sesuai konsep.
-                            </p>
-                        </div>
-                    </article>
+        <button onclick="filterPortfolio('desain', this)">
+          Desain
+        </button>
 
+        <button onclick="filterPortfolio('web', this)">
+          Web
+        </button>
 
-                    <article class="process-item">
-                        <div class="process-number">04</div>
-                        <div>
-                            <h3>Siap Digunakan</h3>
-                            <p>
-                                Project diselesaikan dan siap digunakan.
-                            </p>
-                        </div>
-                    </article>
+        <button onclick="filterPortfolio('digital', this)">
+          Digital
+        </button>
 
-                </div>
+      </div>
 
-            </div>
 
-        </section>
+      <div class="portfolio-grid">
 
+        <div class="portfolio-item" data-category="desain">
+          <div class="portfolio-placeholder">
+            CONTOH DESAIN
+          </div>
 
-        <!-- HARGA -->
-        <section class="pricing" id="harga">
+          <div class="portfolio-info">
+            <h3>Banner / Spanduk</h3>
+            <p>Desain promosi bisnis</p>
+          </div>
+        </div>
 
-            <div class="container">
 
-                <div class="section-head">
-                    <div class="section-label">Harga</div>
+        <div class="portfolio-item" data-category="desain">
+          <div class="portfolio-placeholder">
+            CONTOH DESAIN
+          </div>
 
-                    <h2 class="section-title">
-                        Sesuaikan dengan kebutuhan.
-                    </h2>
+          <div class="portfolio-info">
+            <h3>Poster Promosi</h3>
+            <p>Desain promosi produk</p>
+          </div>
+        </div>
 
-                    <p class="section-desc">
-                        Harga dapat disesuaikan berdasarkan jenis
-                        project dan fitur yang dibutuhkan.
-                    </p>
-                </div>
 
+        <div class="portfolio-item" data-category="web">
+          <div class="portfolio-placeholder">
+            CONTOH WEBSITE
+          </div>
 
-                <div class="pricing-card">
+          <div class="portfolio-info">
+            <h3>Web Undangan</h3>
+            <p>Website undangan digital</p>
+          </div>
+        </div>
 
-                    <span class="pricing-badge">
-                        CUSTOM PROJECT
-                    </span>
 
-                    <h3>Butuh sesuatu yang berbeda?</h3>
+        <div class="portfolio-item" data-category="web">
+          <div class="portfolio-placeholder">
+            CONTOH WEBSITE
+          </div>
 
-                    <p>
-                        Konsultasikan kebutuhan Anda dan kami bantu
-                        menentukan solusi yang sesuai.
-                    </p>
+          <div class="portfolio-info">
+            <h3>Web Profil Usaha</h3>
+            <p>Website bisnis</p>
+          </div>
+        </div>
 
-                    <div class="price-placeholder">
-                        Custom
-                    </div>
 
-                    <ul class="feature-list">
-                        <li>Diskusi kebutuhan</li>
-                        <li>Konsep sesuai kebutuhan</li>
-                        <li>Responsive</li>
-                        <li>Dapat dikembangkan</li>
-                    </ul>
+        <div class="portfolio-item" data-category="digital">
+          <div class="portfolio-placeholder">
+            CONTOH DIGITAL
+          </div>
 
-                    <a href="#kontak"
-                       class="btn btn-primary"
-                       style="width:100%; margin-top:24px;">
-                        Konsultasi Sekarang
-                    </a>
+          <div class="portfolio-info">
+            <h3>Menu Digital</h3>
+            <p>QR Menu untuk usaha</p>
+          </div>
+        </div>
 
-                </div>
 
-            </div>
+        <div class="portfolio-item" data-category="digital">
+          <div class="portfolio-placeholder">
+            CONTOH DIGITAL
+          </div>
 
-        </section>
+          <div class="portfolio-info">
+            <h3>Kartu Nama Digital</h3>
+            <p>Profil digital berbasis QR</p>
+          </div>
+        </div>
 
+      </div>
 
-        <!-- FAQ -->
-        <section id="faq">
+    </section>
 
-            <div class="container">
 
-                <div class="section-head">
-                    <div class="section-label">FAQ</div>
+    <!-- =========================
+         HARGA
+    ========================== -->
 
-                    <h2 class="section-title">
-                        Pertanyaan yang sering ditanyakan.
-                    </h2>
-                </div>
+    <section class="content-screen" id="harga">
 
+      <div class="content-head">
 
-                <div class="faq-list">
+        <button class="back-link" onclick="showHome()">
+          ← Kembali
+        </button>
 
-                    <details>
-                        <summary>
-                            Bisa request desain sendiri?
-                        </summary>
+        <h2>Harga</h2>
 
-                        <p>
-                            Bisa. Konsep dan tampilan dapat
-                            disesuaikan dengan kebutuhan project.
-                        </p>
-                    </details>
+        <p>
+          Pilih kategori untuk melihat contoh paket harga.
+        </p>
 
+      </div>
 
-                    <details>
-                        <summary>
-                            Apakah website bisa dibuka di HP?
-                        </summary>
 
-                        <p>
-                            Bisa. Website dirancang responsive
-                            agar dapat menyesuaikan ukuran layar.
-                        </p>
-                    </details>
+      <div class="price-tabs">
 
+        <button class="price-tab active" onclick="showPrice('priceDesain', this)">
+          DESAIN
+        </button>
 
-                    <details>
-                        <summary>
-                            Bisa dibuatkan aplikasi untuk usaha?
-                        </summary>
+        <button class="price-tab" onclick="showPrice('priceWeb', this)">
+          WEB
+        </button>
 
-                        <p>
-                            Bisa. Aplikasi dapat dibuat sesuai
-                            alur kerja dan kebutuhan usaha.
-                        </p>
-                    </details>
+        <button class="price-tab" onclick="showPrice('priceDigital', this)">
+          DIGITAL
+        </button>
 
+      </div>
 
-                    <details>
-                        <summary>
-                            Bagaimana cara mulai?
-                        </summary>
 
-                        <p>
-                            Cukup hubungi kami dan ceritakan
-                            kebutuhan atau ide yang ingin dibuat.
-                        </p>
-                    </details>
+      <!-- DESAIN -->
 
-                </div>
+      <div class="price-panel active" id="priceDesain">
 
-            </div>
+        <div class="price-grid">
 
-        </section>
+          <div class="price-card">
+            <h3>Desain Sederhana</h3>
+            <div class="starting">Mulai dari</div>
+            <div class="nominal">Rp25K</div>
 
+            <ul>
+              <li>1 desain</li>
+              <li>File JPG / PNG</li>
+              <li>Revisi</li>
+            </ul>
+          </div>
 
-        <!-- CTA -->
-        <section class="cta" id="kontak">
 
-            <div class="container">
+          <div class="price-card">
+            <h3>Desain Promosi</h3>
+            <div class="starting">Mulai dari</div>
+            <div class="nominal">Rp50K</div>
 
-                <div class="cta-box">
+            <ul>
+              <li>Desain lebih kompleks</li>
+              <li>File siap pakai</li>
+              <li>Revisi</li>
+            </ul>
+          </div>
 
-                    <h2>
-                        Punya ide yang mau dibuat?
-                    </h2>
 
-                    <p>
-                        Ceritakan kebutuhan Anda.
-                        Kita cari solusi digital yang paling sesuai.
-                    </p>
+          <div class="price-card">
+            <h3>Custom</h3>
+            <div class="starting">Harga</div>
+            <div class="nominal">Tanya</div>
 
-                    <!-- GANTI LINK WHATSAPP NANTI -->
-                    <a href="#"
-                       class="btn"
-                       onclick="alert('Nomor WhatsApp akan kita pasang setelah website final.'); return false;">
-                        Chat WhatsApp →
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <div class="container">
-
-            <div class="footer-grid">
-
-                <div class="footer-brand">
-
-                    <div class="logo">
-                        <div class="logo-mark">AP</div>
-
-                        <div class="logo-text">
-                            <div class="logo-main">ALIFLAM</div>
-                            <div class="logo-sub">PROJECT</div>
-                        </div>
-                    </div>
-
-                    <p>
-                        Web, Desain & Digital.
-                        Solusi digital untuk kebutuhan
-                        personal maupun bisnis.
-                    </p>
-
-                </div>
-
-
-                <div>
-                    <div class="footer-title">
-                        Layanan
-                    </div>
-
-                    <div class="footer-links">
-                        <a href="#layanan">Website</a>
-                        <a href="#layanan">Digital Business</a>
-                        <a href="#layanan">Aplikasi Usaha</a>
-                        <a href="#layanan">Jasa Desain</a>
-                    </div>
-                </div>
-
-
-                <div>
-                    <div class="footer-title">
-                        Navigasi
-                    </div>
-
-                    <div class="footer-links">
-                        <a href="#portfolio">Portfolio</a>
-                        <a href="#harga">Harga</a>
-                        <a href="#faq">FAQ</a>
-                        <a href="#kontak">Kontak</a>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="footer-bottom">
-                © 2026 Aliflam Project. All rights reserved.
-            </div>
+            <ul>
+              <li>Sesuai kebutuhan</li>
+              <li>Konsep custom</li>
+              <li>Konsultasi</li>
+            </ul>
+          </div>
 
         </div>
 
-    </footer>
+      </div>
 
+
+      <!-- WEB -->
+
+      <div class="price-panel" id="priceWeb">
+
+        <div class="price-grid">
+
+          <div class="price-card">
+            <h3>Web Undangan</h3>
+            <div class="starting">Mulai dari</div>
+            <div class="nominal">Rp150K</div>
+
+            <ul>
+              <li>Website undangan</li>
+              <li>Responsive HP</li>
+              <li>Link siap dibagikan</li>
+            </ul>
+          </div>
+
+
+          <div class="price-card">
+            <h3>Web Profil Usaha</h3>
+            <div class="starting">Mulai dari</div>
+            <div class="nominal">Rp300K</div>
+
+            <ul>
+              <li>Profil bisnis</li>
+              <li>Responsive</li>
+              <li>Kontak WhatsApp</li>
+            </ul>
+          </div>
+
+
+          <div class="price-card">
+            <h3>Web Custom</h3>
+            <div class="starting">Harga</div>
+            <div class="nominal">Tanya</div>
+
+            <ul>
+              <li>Sesuai kebutuhan</li>
+              <li>Fitur custom</li>
+              <li>Konsultasi</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- DIGITAL -->
+
+      <div class="price-panel" id="priceDigital">
+
+        <div class="price-grid">
+
+          <div class="price-card">
+            <h3>Menu Digital</h3>
+            <div class="starting">Mulai dari</div>
+            <div class="nominal">Rp100K</div>
+
+            <ul>
+              <li>Menu online</li>
+              <li>QR Code</li>
+              <li>Responsive HP</li>
+            </ul>
+          </div>
+
+
+          <div class="price-card">
+            <h3>Kartu Nama Digital</h3>
+            <div class="starting">Mulai dari</div>
+            <div class="nominal">Rp75K</div>
+
+            <ul>
+              <li>Profil digital</li>
+              <li>Link kontak</li>
+              <li>QR Code</li>
+            </ul>
+          </div>
+
+
+          <div class="price-card">
+            <h3>Aplikasi Custom</h3>
+            <div class="starting">Harga</div>
+            <div class="nominal">Tanya</div>
+
+            <ul>
+              <li>Sesuai kebutuhan</li>
+              <li>Fitur custom</li>
+              <li>Konsultasi</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="cta">
+
+        <div>
+          <h3>Belum tahu butuh yang mana?</h3>
+          <p>Chat dulu. Kita bantu arahkan sesuai kebutuhan.</p>
+        </div>
+
+        <a class="cta-button" href="https://wa.me/6281234567890" target="_blank">
+          Tanya Harga
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TENTANG
+    ========================== -->
+
+    <section class="content-screen" id="tentang">
+
+      <div class="content-head">
+
+        <button class="back-link" onclick="showHome()">
+          ← Kembali
+        </button>
+
+        <h2>Tentang</h2>
+
+        <p>
+          Kenalan dengan Aliflam Project.
+        </p>
+
+      </div>
+
+
+      <div class="about-box">
+
+        <h3>ALIFLAM PROJECT</h3>
+
+        <p>
+          Aliflam Project adalah layanan <strong>Desain, Web & Digital</strong>
+          yang membantu bisnis maupun kebutuhan personal memiliki tampilan
+          dan solusi digital yang lebih praktis dan profesional.
+        </p>
+
+        <p>
+          Mulai dari desain visual, website, produk digital hingga aplikasi
+          custom — semuanya dibuat berdasarkan kebutuhan.
+        </p>
+
+
+        <div class="about-points">
+
+          <div class="about-point">
+            🎨 Desain Kreatif
+          </div>
+
+          <div class="about-point">
+            🌐 Website
+          </div>
+
+          <div class="about-point">
+            ⚡ Solusi Digital
+          </div>
+
+          <div class="about-point">
+            🛠️ Custom Sesuai Kebutuhan
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="cta">
+
+        <div>
+          <h3>Punya ide atau kebutuhan?</h3>
+          <p>Yuk ngobrol dulu.</p>
+        </div>
+
+        <a class="cta-button" href="https://wa.me/6281234567890" target="_blank">
+          Hubungi Kami
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       WHATSAPP
+  ========================== -->
+
+  <a
+    href="https://wa.me/6281234567890"
+    target="_blank"
+    class="whatsapp"
+    aria-label="Chat WhatsApp">
+    ☎
+  </a>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+    © 2026 Aliflam Project · Desain - Web - Digital
+  </footer>
+
+</div>
+
+
+<script>
+
+  /* =========================
+     NAVIGATION
+  ========================= */
+
+  function showPage(pageId) {
+
+    document.getElementById("homeScreen").style.display = "none";
+
+    document.querySelectorAll(".content-screen").forEach(function(section) {
+      section.classList.remove("active");
+    });
+
+    const target = document.getElementById(pageId);
+
+    if (target) {
+      target.classList.add("active");
+    }
+
+    document.getElementById("homeButton").classList.add("show");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+
+  function showHome() {
+
+    document.querySelectorAll(".content-screen").forEach(function(section) {
+      section.classList.remove("active");
+    });
+
+    document.getElementById("homeScreen").style.display = "block";
+
+    document.getElementById("homeButton").classList.remove("show");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+
+  /* =========================
+     PRICE TABS
+  ========================= */
+
+  function showPrice(panelId, button) {
+
+    document.querySelectorAll(".price-panel").forEach(function(panel) {
+      panel.classList.remove("active");
+    });
+
+    document.querySelectorAll(".price-tab").forEach(function(tab) {
+      tab.classList.remove("active");
+    });
+
+    document.getElementById(panelId).classList.add("active");
+
+    button.classList.add("active");
+  }
+
+
+  /* =========================
+     PORTFOLIO FILTER
+  ========================= */
+
+  function filterPortfolio(category, button) {
+
+    document.querySelectorAll(".portfolio-filter button").forEach(function(btn) {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    document.querySelectorAll(".portfolio-item").forEach(function(item) {
+
+      if (category === "all") {
+        item.style.display = "block";
+      } else {
+
+        if (item.dataset.category === category) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+
+      }
+
+    });
+  }
+
+</script>
 
 </body>
 </html>
